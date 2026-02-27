@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Leaf, Utensils, Target, DollarSign, Globe, Calculator, ArrowRight, CheckCircle, Info } from 'lucide-react';
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://ai-fitness-provider.onrender.com";
 
 const App = () => {
   // Calorie Predictor State
