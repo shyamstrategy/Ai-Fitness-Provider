@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Fitness Planner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Personalized Fitness Planner</h2>
+
+<form id="fitnessForm">
+    Age: <input type="number" name="age"><br>
+    Weight (kg): <input type="number" name="weight"><br>
+    Height (m): <input type="number" step="0.01" name="height"><br>
+    Activity Level (1-5): <input type="number" name="activity"><br>
+    <button type="submit">Generate Plan</button>
+</form>
+
+<h3 id="result"></h3>
+
+<script>
+document.getElementById("fitnessForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    
+    let formData = new FormData(this);
+
+    fetch("/predict", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText =
+            "Daily Required Calories: " + data.daily_calories;
+    });
+});
+</script>
+
+</body>
+</html>
